@@ -5,7 +5,7 @@ using Dapper;
 
 namespace BestBuyBestPractices
 {
-    public class DapperProductRepository 
+    public class DapperProductRepository : IProductRepository
     {
         private readonly IDbConnection _connection;
 
@@ -18,15 +18,11 @@ namespace BestBuyBestPractices
         {
             return _connection.Query<Product>("SELECT * FROM Products;");
         }
-        public void CreateProduct(string name, double price /*int categoryID*/)
+        public void CreateProduct(string name, double price, int categoryID)
         {
-           /* _connection.Execute("INSERT INTO Products (Name, Price, CategoryID) VALUES(@productName,@productPrice,@productCategoryID);",
-                new { productName = name, productPrice = price, productCategory = categoryID });
-            Console.WriteLine($"{name}, {price}, {categoryID} has been added to the Products table.");*/
-
             _connection.Execute("INSERT INTO Products (Name, Price, CategoryID) VALUES(@productName,@productPrice,@productCategoryID);",
-                new { productName = name, productPrice = price });
-            Console.WriteLine($"{name}, {price} has been added to the Products table.");
+                new { productName = name, productPrice = price, productCategory = categoryID });
+            Console.WriteLine($"{name}, {price}, {categoryID} has been added to the Products table.");
 
         }
 
