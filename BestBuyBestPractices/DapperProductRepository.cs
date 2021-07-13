@@ -20,8 +20,8 @@ namespace BestBuyBestPractices
         }
         public void CreateProduct(string name, double price, int categoryID)
         {
-            _connection.Execute("INSERT INTO Products (Name, Price, CategoryID) VALUES(@productName,@productPrice,@productCategoryID);",
-                new { productName = name, productPrice = price, productCategory = categoryID });
+            _connection.Execute("INSERT INTO Products (Name, Price, CategoryID) VALUES (@productName, @productPrice, @productCategoryID);",
+                new { productName = name, productPrice = price, productCategoryID = categoryID });
             Console.WriteLine($"{name}, {price}, {categoryID} has been added to the Products table.");
 
         }
@@ -34,15 +34,19 @@ namespace BestBuyBestPractices
         }
         public void DeleteProduct(int productID)
         {
-            _connection.Execute("DELETE FROM Products WHERE ProductID = @deleteProductID;",
-                new { deleteProductID = productID });
             _connection.Execute("DELETE FROM Sales WHERE ProductID = @deleteProductID;",
                 new { deleteProductID = productID });
             _connection.Execute("DELETE FROM Reviews WHERE ProductID = @deleteProductID;",
                 new { deleteProductID = productID });
+            _connection.Execute("DELETE FROM Products WHERE ProductID = @deleteProductID;",
+                new { deleteProductID = productID });
             Console.WriteLine($"ProductID {productID} has been deleted from the Products table.");
         }
 
-        
+        public IEnumerable<Product> SelectOnSale(int sale)
+        {
+            return _connection.Query<Product>("SELECT * FROM Products WHERE OnSale = @sale;",
+                new { sale = sale });
+        }
     }
 }

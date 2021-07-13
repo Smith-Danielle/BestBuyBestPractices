@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Threading;
 
 
 namespace BestBuyBestPractices
@@ -42,7 +43,7 @@ namespace BestBuyBestPractices
             }*/
 
             //Exercise 2
-            var repo2 = new DapperProductRepository(conn);
+            /*var repo2 = new DapperProductRepository(conn);
             
             Console.WriteLine("Enter a new Proudct. Let's start with the name.");
 
@@ -59,6 +60,7 @@ namespace BestBuyBestPractices
             repo2.CreateProduct(newProdName, newProdPrice, newProdCat);
 
             var products = repo2.GetAllProducts();
+            Thread.Sleep(1500);
 
             foreach (var item in products)
             {
@@ -66,7 +68,7 @@ namespace BestBuyBestPractices
                 Console.WriteLine($"Price: {item.Price}");
                 Console.WriteLine($"Cat ID:{item.CategoryID}");
                 Console.WriteLine("---------------------------------------");
-            }
+            }*/
 
             //Bonus 1
             /*var repo3 = new DapperProductRepository(conn);
@@ -74,7 +76,26 @@ namespace BestBuyBestPractices
 
             //Bonus 2
             /*var repo4 = new DapperProductRepository(conn);
-            repo4.DeleteProduct(941);*/
+            repo4.DeleteProduct(945);*/
+
+            //My own Bonus Items on Sale or Not
+            /*var repo5 = new DapperProductRepository(conn);
+            var sales = repo5.SelectOnSale(1);
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("On Sale Items");
+            Console.WriteLine("-----------------------------");
+            foreach (var item in sales)
+            {
+                Console.WriteLine($"PrductID {item.ProductID}: OnSale {item.OnSale} - {item.Name} @ {item.Price}");
+            }
+            var sales1 = repo5.SelectOnSale(0);
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Non-Sale Items");
+            Console.WriteLine("-----------------------------");
+            foreach (var item in sales1)
+            {
+                Console.WriteLine($"PrductID {item.ProductID}: OnSale {item.OnSale} - {item.Name} @ {item.Price}");
+            }*/
 
 
         }

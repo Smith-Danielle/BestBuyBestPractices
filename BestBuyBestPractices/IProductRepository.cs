@@ -7,5 +7,6 @@ namespace BestBuyBestPractices
     {
         IEnumerable<Product> GetAllProducts();
         void CreateProduct(string name, double price, int categoryID);
+        IEnumerable<Product> SelectOnSale(int sale);
     }
 }
