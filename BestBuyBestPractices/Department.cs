@@ -6,6 +6,7 @@ namespace BestBuyBestPractices
         public Department()
         {
         }
+        //Columns listed in the Department table from SQL
         public int DepartmentID { get; set; }
         public string Name { get; set; }
     }

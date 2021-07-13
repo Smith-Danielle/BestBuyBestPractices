@@ -11,11 +11,14 @@
     <None Remove="Microsoft.Extensions.Configuration.Json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="obj\Debug\net5.0\appsettings.json" />
+    <None Include="bin\Debug\net5.0\appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\net5.0\" />
   </ItemGroup>
 </Project>

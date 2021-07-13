@@ -23,6 +23,7 @@ namespace BestBuyBestPractices
         {
             _connection.Execute("INSERT INTO Departments (Name) VALUES (@departmentName);",
                 new { departmentName = newDepartmentName });
+            Console.WriteLine($"{newDepartmentName} has been been added to the Department table.");
         }
     }
 }
